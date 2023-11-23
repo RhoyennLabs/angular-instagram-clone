@@ -1,0 +1,23 @@
+.homeWrapper{
+    width: 85vw;
+    height: 100vh;
+    background-color: black;
+    margin-left: 15vw;
+    position:absolute;
+    display: flex;
+    justify-content: left;
+
+}
+.stories-and-feed-wrapper{
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start ;
+
+}
+.sugestions-wrapper{
+    background-color: aqua;
+    width: 25vw;
+}

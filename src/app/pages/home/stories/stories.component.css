@@ -1,0 +1,18 @@
+.stories{
+    width: 60vw;
+    background-color: rgb(30, 131, 220);
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+img{
+    height: 10vh;
+    width: 10vh;
+    padding:1% 1% ;
+    margin: 1%;
+    border-radius: 110%;
+}
