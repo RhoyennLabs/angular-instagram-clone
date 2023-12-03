@@ -1,1 +1,44 @@
-<p>nav works!</p>
+<nav class="toolbar" role="banner">
+    <ul class="nav">
+        <li class="nav-item">
+            <img class="instagramHomeLogo" src="https://res.cloudinary.com/debvhmcid/image/upload/v1699707595/Logo-Instagram_uv6hzn.png" alt="">
+        </li>
+    </ul>
+
+    <ul class="nav">
+      <li class="nav-item">
+        <button type="button" class="btn btn-light">🏠Inicio</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-light" data-bs-target="#staticBackdrop"  data-bs-toggle="modal">🔎Busqueda</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-light">🧭Explorar</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-light">💬Mensajes</button>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-light">🔑Login</button>
+      </li>
+    </ul>
+  </nav>
+
+   <!-- SEARCH MODAL-->  
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Buscar</h1>
+          <input type="text" class="form-control" placeholder="Busca usuarios aquí" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          no existen busquedas recientes
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

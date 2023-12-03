@@ -1,0 +1,49 @@
+.toolbar{
+    background-color: #fff;
+    width: 15vw;
+    position:absolute;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: min-content;
+    width: 15vw;
+  }
+  .nav-item {
+    margin-left: 10px;
+
+  }
+  .instagramHomeLogo{
+    height: 15vh;
+    width: 19vh;
+  }
+  .nav-link {
+    font-size: 30px;
+    color: #333; /* Color de texto normal */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Agrega una transición suave al cambio de color */
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Cambia el color al pasar el ratón sobre el enlace */
+  }
+  
+  .nav-link.disabled {
+    color: #868e96; /* Color para enlaces deshabilitados */
+  }
+  .btn{
+    width: 10vw;
+    margin: 10% 0%;
+  }
+  .modal-header{
+    display: flex;
+    flex-direction: column;
+  }

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavComponent {
 
+  constructor() {
+    // debes terminar la logica de este componente
+  }
+
 }
