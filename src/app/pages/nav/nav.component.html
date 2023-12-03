@@ -7,7 +7,7 @@
 
     <ul class="nav">
       <li class="nav-item">
-        <button type="button" class="btn btn-light">🏠Inicio</button>
+        <button type="button" (click)="goToHome()" class="btn btn-light" >🏠Inicio</button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-light" data-bs-target="#staticBackdrop"  data-bs-toggle="modal">🔎Busqueda</button>
@@ -16,7 +16,7 @@
         <button type="button" class="btn btn-light">🧭Explorar</button>
       </li>
       <li class="nav-item">
-        <button type="button" class="btn btn-light">💬Mensajes</button>
+        <button type="button" (click)="goToReels()" class="btn btn-light">💬Reels</button>
       </li>
       <li class="nav-item">
         <button type="button" class="btn btn-light">🔑Login</button>

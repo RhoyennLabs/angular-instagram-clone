@@ -10,6 +10,7 @@ import { NavComponent } from './pages/nav/nav.component';
 import { FeedComponent } from './pages/home/feed/feed.component';
 import { StoriesComponent } from './pages/home/stories/stories.component';
 import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendados/usuarios-recomendados.component';
+import { ReelsComponent } from './pages/reels/reels.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendado
     NavComponent,
     FeedComponent,
     StoriesComponent,
-    UsuariosRecomendadosComponent
+    UsuariosRecomendadosComponent,
+    ReelsComponent
   ],
   imports: [
     BrowserModule,
