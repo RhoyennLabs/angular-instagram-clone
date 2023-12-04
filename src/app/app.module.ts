@@ -11,6 +11,7 @@ import { FeedComponent } from './pages/home/feed/feed.component';
 import { StoriesComponent } from './pages/home/stories/stories.component';
 import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendados/usuarios-recomendados.component';
 import { ReelsComponent } from './pages/reels/reels.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ReelsComponent } from './pages/reels/reels.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
