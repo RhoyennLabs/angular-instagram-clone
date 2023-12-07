@@ -11,7 +11,7 @@ import { Usuario } from '../../models/userInterface';
 export class NavComponent {
   usuarios: Usuario[] = [{id:1,nombre:"rodrigo"},{id:2,nombre:"juaco"}];
   textoBusqueda: string = '';
-  usuariosDeLaBusqueda: Usuario[] = [{id:1,nombre:''}];
+  usuariosDeLaBusqueda: Usuario[] = [];
   constructor(private router: Router) {
     // Puedes realizar alguna lógica adicional en el constructor si es necesario
   }
@@ -33,13 +33,13 @@ export class NavComponent {
   }
  async filtrarUsuarios(): Promise<void> {
     console.log(this.textoBusqueda);
-  
+    this.usuarios=[{id:0,nombre:"No hay usuarios que coincidan con la búsqueda."}]
     let usuariosEncontrados: any[] =await this.usuarios.filter(usuario =>
       usuario.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase())
     );
   
     if (usuariosEncontrados.length === 0) {
-      this.usuariosDeLaBusqueda = [{id:1,nombre:"No hay usuarios que coincidan con la búsqueda."}];
+      this.usuariosDeLaBusqueda = [{id:0,nombre:"No hay usuarios que coincidan con la búsqueda."}];
     }else if(usuariosEncontrados.length > 0){
       this.usuariosDeLaBusqueda = usuariosEncontrados;
     }
