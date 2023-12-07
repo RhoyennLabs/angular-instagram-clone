@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Usuario } from '../../models/userInterface';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
+
+
 export class NavComponent {
-  usuarios: any[] = [];
+  usuarios: Usuario[] = [{id:1,nombre:"rodrigo"},{id:2,nombre:"juaco"}];
   textoBusqueda: string = '';
-  usuariosDeLaBusqueda: string = 'no hay usuarios que coincidan con la busqueda';
+  usuariosDeLaBusqueda: Usuario[] = [{id:1,nombre:''}];
   constructor(private router: Router) {
     // Puedes realizar alguna lógica adicional en el constructor si es necesario
   }
@@ -29,17 +31,17 @@ export class NavComponent {
     // Por ejemplo, podrías redirigir usando window.location.href
     this.router.navigate(['/navigate']);
   }
-  filtrarUsuarios():any {
-    console.log(this.textoBusqueda)
+ async filtrarUsuarios(): Promise<void> {
+    console.log(this.textoBusqueda);
   
-    let usuariosEncontrados:any= this.usuarios.filter(usuario =>
-
+    let usuariosEncontrados: any[] =await this.usuarios.filter(usuario =>
       usuario.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase())
     );
-    if (usuariosEncontrados != ''){
-      this.usuariosDeLaBusqueda= "no hay usuarios que coincidan con la busqueda"
-    }else{
-      this.usuariosDeLaBusqueda=usuariosEncontrados
+  
+    if (usuariosEncontrados.length === 0) {
+      this.usuariosDeLaBusqueda = [{id:1,nombre:"No hay usuarios que coincidan con la búsqueda."}];
+    }else if(usuariosEncontrados.length > 0){
+      this.usuariosDeLaBusqueda = usuariosEncontrados;
     }
   }
 }
