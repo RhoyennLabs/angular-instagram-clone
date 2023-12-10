@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+<div class="profileWrapper">
+<header>
+    <div class="user-Profile-Picture-div">
+        <img class="profilePicture"  [src]="userService.profileSelected.profilePicture" alt="">
+    </div>
+    <div class="userData">
+        <div class="nameAndEditProfile">
+            <h1>{{userService.profileSelected.nombre}}</h1>
+            <button type="button" class="btn btn-light">edit profile</button>
+        </div>
+        <div class="followersFollowingAndPosts">
+
+        </div>
+        <p class="aboutMe">hola soy {{userService.profileSelected.nombre}} y me gustan los helados.</p>
+    </div>
+
+</header>
+<section class="postsWrapper">
+    
+    @for(post of userService.profileSelected.posts; track userService.profileSelected.posts){
+         <div class="post">
+            <img [src]="post.picture" alt="">
+         </div>
+    }@empty
+    {
+            <p>no hay publicaciones que mostrar</p>
+    }
+ </section> 
+
+</div>

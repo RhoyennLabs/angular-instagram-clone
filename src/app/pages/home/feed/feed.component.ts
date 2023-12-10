@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../../users.service';
+
 
 @Component({
   selector: 'app-feed',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './feed.component.css'
 })
 export class FeedComponent {
+  userService:UserService
 
+  constructor(UserService:UserService){
+    this.userService=UserService
+  }
 }

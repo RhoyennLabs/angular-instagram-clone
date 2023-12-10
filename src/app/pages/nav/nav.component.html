@@ -31,13 +31,16 @@
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Buscar</h1>
            <!-- SEARCH QUERY TEXT INPUT --> 
-          <input type="text" class="form-control" [(ngModel)]="textoBusqueda"  (input)="filtrarUsuarios()" placeholder="Busca usuarios aquí" aria-label="Recipient's username" aria-describedby="basic-addon2">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <input type="text" class="form-control" [(ngModel)]="userService.textoBusqueda"  (input)="userService.filtrarUsuarios()" placeholder="Busca usuarios aquí" aria-label="Recipient's username" aria-describedby="basic-addon2">
         </div>
-        <div class="modal-body">
-     
-          @for (usuario of usuariosDeLaBusqueda; track usuariosDeLaBusqueda.id ) {
-            {{ usuario.nombre }}
+        <div class="modal-body">  
+          @for (usuario of userService.usuariosDeLaBusqueda; track userService.usuariosDeLaBusqueda ) {
+         <div class="userWrapper" (click)="userService.redirectToProfileSelected(usuario.nombre)"  data-bs-dismiss="modal">
+            <img [src] ="usuario.profilePicture" alt="user-Profile-Picture"><span>{{ usuario.nombre }}</span>
+         </div>
+           }
+          @empty{
+            <span>No hay usuarios que coincidan con la busqueda</span>
           }
         </div>
         <div class="modal-footer">

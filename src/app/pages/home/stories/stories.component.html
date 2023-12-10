@@ -1,17 +1,6 @@
 <div class="stories">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
-    <img src="https://res.cloudinary.com/debvhmcid/image/upload/v1692649216/Captura29_pex3tl.jpg" alt="" srcset="">
+    @for(user of userService.usuarios; track userService.usuarios)
+    {
+        <img [src]="user.profilePicture" alt="">
+    }
 </div>

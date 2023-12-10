@@ -1,0 +1,94 @@
+.profileWrapper
+{
+        width: 85vw;
+        height: 100vh;
+        margin-left: 15vw;
+        position:absolute;
+        display: flex;
+       flex-direction: column;
+    
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff; /* Cambia el color de fondo según tu diseño */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-Profile-Picture-div {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profilePicture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .userData {
+    flex-grow: 1;
+  }
+  
+  .nameAndEditProfile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-light {
+    margin-left: 10px;
+  }
+  
+  /* Media queries para dispositivos móviles */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .user-Profile-Picture-div {
+      margin: 0 auto 10px;
+    }
+  
+    .nameAndEditProfile {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+  }
+  
+  /* Estilos para la sección de publicaciones */
+  .postsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+  }
+  
+  .post {
+    width: calc(33.33% - 20px); /* Para un diseño de 3 columnas, ajusta según tus necesidades */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Media queries adicionales según sea necesario */
+  
+  /* Ajustes para dispositivos más pequeños */
+  @media (max-width: 576px) {
+    .postsWrapper {
+      margin: 10px;
+    }
+  }

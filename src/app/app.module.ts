@@ -12,6 +12,7 @@ import { StoriesComponent } from './pages/home/stories/stories.component';
 import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendados/usuarios-recomendados.component';
 import { ReelsComponent } from './pages/reels/reels.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     FeedComponent,
     StoriesComponent,
     UsuariosRecomendadosComponent,
-    ReelsComponent
+    ReelsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

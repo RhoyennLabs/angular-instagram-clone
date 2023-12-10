@@ -1,9 +1,11 @@
 
-.user{
+.userOnline{
     width: 100%;
     height: 10%;
+    padding-left: 3%;
+    padding-top: 6%;
 }
-.user img{
+.userOnline img{
     border-radius: 110%;
     height: 5vh;
     width: 5vh;
@@ -11,9 +13,19 @@
 .suggestions{
     width: 100%;
     height: min-content;
+    padding-left: 3%;
 }
 .suggestions img{
     border-radius: 110%;
     height: 5vh;
     width: 5vh;
+}
+.persona{
+    padding-top: 3%;
+    padding-left: 0%;
+    display: flex;
+    cursor: pointer;
+}
+.username{
+    padding-left: 3%;
 }

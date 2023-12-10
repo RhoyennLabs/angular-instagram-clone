@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../../users.service';
 
 @Component({
   selector: 'app-stories',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './stories.component.css'
 })
 export class StoriesComponent {
-
+  userService:UserService 
+  constructor(UserService:UserService){
+    this.userService= UserService  
+  }
+  
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../../users.service';
 
 @Component({
   selector: 'app-usuarios-recomendados',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './usuarios-recomendados.component.css'
 })
 export class UsuariosRecomendadosComponent {
-
+  userService:UserService
+  constructor(UserService:UserService){
+  this.userService=UserService
+  }
 }
