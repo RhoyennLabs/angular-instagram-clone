@@ -12,7 +12,10 @@
             <input type="button"  value="💬">
             <input type="button"  value="share">
         </div>
-        <p class="postLikes">100 likes</p>
+       
+        <p class="postLikes">
+           {{post.likes.length}}
+        </p>
         <p class="postComment">{{post.description}}</p>
         <div class="buttons">
             <input type="text" placeholder="Escribe un comentario..."><input type="button" value="🚀send">

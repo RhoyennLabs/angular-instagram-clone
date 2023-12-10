@@ -6,5 +6,5 @@ export interface post {
     description:string
     picture:string
     likes:likes[]
-    comemnts:comments[]
+    comments:comments[]
   }

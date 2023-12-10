@@ -57,7 +57,11 @@ export class UserService{
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097158/happy-friends-love-hug_nlygqn.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097394/empire-state-building_ecb995bd_800x800_hh0ysu.jpg"
     ];
-  
+    let postsComments: string[] = [
+      "how cute!!! super genial!!",
+      "felicidad es amar a otra persona.",
+      "ya quiero viajar al extranjero"
+    ];
     let postText: string[] = [
       "feliz de estar aquí",
       "someone noticed this day is the most shiny day ever?",
@@ -71,6 +75,7 @@ export class UserService{
       // Seleccionar un nombre aleatorio de la lista de nombres
       let randomUser = this.obtenerElementoUnico(users);
       let randomPic = this.obtenerElementoUnico(pictures);
+      let randomComment= this.obtenerElementoUnico(postsComments)
       let newUser: Usuario = {
         id: (i + 1),
         nombre:randomUser,
@@ -79,18 +84,21 @@ export class UserService{
           usuario:randomUser,
           profilePicture:randomPic,
           description: postText[i],
-          picture: postsImages[i]
+          picture: postsImages[i],
+          likes:[{usuario:randomUser,userProfilePicture: postsImages[i]}],
+          comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
         }]
       };
       // Agregar el nuevo usuario al array final
       finalUsersCreated.push(newUser);
-      
     } 
+   //empujar todos los post de todos los usuarios a la feed
     finalUsersCreated.forEach(element => {
         element.posts.forEach(element=>{
           this.feedPosts.push(element)
         })
-    });
+      });
+   
     this.usuarios = finalUsersCreated; // Asigna la lista de usuarios creados al array del servicio
     console.log(finalUsersCreated);
   }
