@@ -46,7 +46,7 @@ export class UserService{
     
   }
 
-  private crearUsuarios(): void {
+  private async crearUsuarios():Promise<void>{
     let pictures: string[] = [
       "https://res.cloudinary.com/debvhmcid/image/upload/v1691696017/serviciosocial_cdw2nz.png",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1692592508/templario/Captura8_bdr8yw.jpg",
@@ -71,27 +71,48 @@ export class UserService{
   
     let users: string[] = ["rodrigoa44", "felipex777", "joserodriguez"];
     let finalUsersCreated: Usuario[] = [];
-  
+
+
     for (let i = 0; i < Math.max(users.length, pictures.length, postsImages.length, postText.length); i++) {
-      // Seleccionar un nombre aleatorio de la lista de nombres
       let randomUser = this.obtenerElementoUnico(users);
       let randomPic = this.obtenerElementoUnico(pictures);
       let randomComment= this.obtenerElementoUnico(postsComments)
-      let newUser: Usuario = {
-        id: (i + 1),
-        nombre:randomUser,
-        profilePicture: randomPic,
-        posts: [{
-          usuario:randomUser,
-          profilePicture:randomPic,
-          description: postText[i],
-          picture: postsImages[i],
-          likes:[{usuario:randomUser,userProfilePicture: postsImages[i]}],
-          comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
-        }]
-      };
-      // Agregar el nuevo usuario al array final
-      finalUsersCreated.push(newUser);
+      if(this.usuarios.length > 1){
+ // Seleccionar un nombre aleatorio de la lista de nombres
+
+          let newUser: Usuario = {
+            id: (i + 1),
+            nombre:randomUser,
+            profilePicture: randomPic,
+            posts: [{
+              usuario:randomUser,
+              profilePicture:randomPic,
+              description: postText[i],
+              picture: postsImages[i],
+              likes:await this.getRandomLikes(),
+              comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
+              }]
+           };
+               // Agregar el nuevo usuario al array final
+              finalUsersCreated.push(newUser);
+      }else{
+        let newUser: Usuario = {
+          id: (i + 1),
+          nombre:randomUser,
+          profilePicture: randomPic,
+          posts: [{
+            usuario:randomUser,
+            profilePicture:randomPic,
+            description: postText[i],
+            picture: postsImages[i],
+            likes:[{userProfilePicture:randomPic,usuario:randomUser}],
+            comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
+            }]
+         };
+             // Agregar el nuevo usuario al array final
+            finalUsersCreated.push(newUser);
+      }
+     
     } 
    //empujar todos los post de todos los usuarios a la feed
     finalUsersCreated.forEach(element => {
@@ -116,5 +137,8 @@ export class UserService{
   getLikesOfAPost(likes:likes[]){
     this.selectedPostLikes=likes
   }
+  getRandomLikes():Like[]{
+    const totalDeLikes = Math.floor(Math.random() * this.usuarios.length);
 
+  }
  } 

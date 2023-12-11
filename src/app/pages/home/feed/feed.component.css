@@ -9,7 +9,14 @@
     flex-direction: column;
     border-top: solid 2px red;
 }
-
+.likerWrapper img{
+    height: 3vh;
+    width: 3vh;
+    border-radius: 50%;
+  }
+  .likerWrapper span{
+    padding-left: 4%;
+  }
 .post{
     margin-top:5vh ;
     width: 34vw;
@@ -33,6 +40,7 @@ width: 100%;
     width: 100%;
     padding-top: 3%;
     font-weight:900;
+    cursor: pointer;
     }
 .postUserImage{
     width: 10vh;
@@ -40,6 +48,11 @@ width: 100%;
     border-radius:650%;
     cursor: pointer;
 }
+.likerWrapper{
+    display: flex;
+    flex-direction: row;
+    padding: 4% 0%;
+  }
 .postUser{
     width: 100%;
     display: flex;
