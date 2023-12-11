@@ -20,4 +20,6 @@
 .sugestions-wrapper{
     background-color: whitesmoke;
     width: 25vw;
+    height: 100vh;
+    overflow: scroll;
 }
