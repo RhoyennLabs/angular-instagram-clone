@@ -13,8 +13,8 @@
             <input type="button"  value="share">
         </div>
        
-        <p class="postLikes">
-           {{post.likes.length}}
+        <p class="postLikes" (click)="userService.getLikesOfAPost(post.likes)"  data-bs-target="#staticBackdrop2"  data-bs-toggle="modal">
+           {{post.likes.length}} likes
         </p>
         <p class="postComment">{{post.description}}</p>
         <div class="buttons">
@@ -24,5 +24,29 @@
     </div>
  
 }
- 
 </div>
+
+ <!-- SEARCH QUERY MODAL --> 
+
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Buscar</h1>
+           <!-- SEARCH QUERY TEXT INPUT --> 
+          <input type="text" class="form-control" [(ngModel)]="userService.textoBusqueda"  (input)="userService.filtrarUsuarios()" placeholder="Busca usuarios aquí" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        </div>
+        <div class="modal-body">  
+          @for (usuario of userService.selectedPostLikes; track userService.selectedPostLikes ) {
+                 <p>hola</p>
+           }
+          @empty{
+            <span>No hay usuarios que coincidan con la busqueda</span>
+          }
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

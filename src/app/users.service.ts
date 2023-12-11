@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from './models/userInterface';
 import { post } from './models/postInterface';
-
+import { likes } from './models/likesInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class UserService{
   profileSelected: Usuario
   textoBusqueda: string = '';
   usuariosDeLaBusqueda: Usuario[] = [];
+  selectedPostLikes:likes[]=[]
   router:Router
   constructor(Router:Router) {
      this.crearUsuarios();
@@ -111,6 +112,9 @@ export class UserService{
   } else {
     alert("El usuario ya no se encuentra en instagram o no se ha registrado")
   }
+  }
+  getLikesOfAPost(likes:likes[]){
+    this.selectedPostLikes=likes
   }
 
  } 

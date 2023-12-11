@@ -13,6 +13,7 @@ import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendado
 import { ReelsComponent } from './pages/reels/reels.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { LikesModalComponent } from './pages/home/feed/likes-modal/likes-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     StoriesComponent,
     UsuariosRecomendadosComponent,
     ReelsComponent,
-    ProfileComponent
+    ProfileComponent,
+    LikesModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,1 @@
+there's a modal at the end of the feed.component.html file. it's the search query modal.
