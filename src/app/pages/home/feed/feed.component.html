@@ -3,8 +3,8 @@
 {  
     <div class="post"> 
         <div class="postUser">
-            <img [src]="post.profilePicture" class="postUserImage" alt="" (click)="userService.redirectToProfileSelected(post.usuario)">
-            <p class="postUsername" (click)="userService.redirectToProfileSelected(post.usuario)">{{post.usuario}}</p>
+            <img [src]="post.profilePicture" class="postUserImage" alt="" (click)="userService.redirectToProfileSelected(post.usuario,'profile')">
+            <p class="postUsername" profileSelected>{{post.usuario}}</p>
         </div>
         <img class="picture" [src]="post.picture" alt="" srcset="">
         <div class="buttons">

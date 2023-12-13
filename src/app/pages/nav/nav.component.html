@@ -35,7 +35,7 @@
         </div>
         <div class="modal-body">  
           @for (usuario of userService.usuariosDeLaBusqueda; track userService.usuariosDeLaBusqueda ) {
-         <div class="userWrapper" (click)="userService.redirectToProfileSelected(usuario.nombre)"  data-bs-dismiss="modal">
+         <div class="userWrapper" (click)="userService.redirectToProfileSelected(usuario.nombre,'profile')"  data-bs-dismiss="modal">
             <img [src] ="usuario.profilePicture" alt="user-Profile-Picture"><span>{{ usuario.nombre }}</span>
          </div>
            }

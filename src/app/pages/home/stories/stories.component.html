@@ -1,7 +1,7 @@
 <div class="stories">
     @for(user of userService.usuarios; track userService.usuarios)
     {
-        <img [src]="user.profilePicture"  data-bs-target="#staticBackdrop3"  data-bs-toggle="modal" alt="">
+        <img [src]="user.profilePicture"  data-bs-target="#staticBackdrop3" (click)="userService.redirectToProfileSelected(user.nombre,'stories')" data-bs-toggle="modal" alt="">
     }
 </div>
 
@@ -10,9 +10,23 @@
   
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Likes</h1>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <div class="userInfoWrapper">
+            <img [src]="userService.profileSelected.profilePicture" alt="">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{userService.profileSelected.nombre}}</h1>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+          <div class="progressBarsWrapper">
+ 
+          @for(progress of progressBars;track progressBars){
+           <div class="storiesBar">
+   
+              <div class="progress-bar" [style.width]="progress.width"></div>
+          
+           </div>
+            }
+          </div>
         </div>
+       
         <div class="modal-body">  
 
         </div>

@@ -17,3 +17,45 @@ img{
     border-radius: 110%;
     border: 2px solid slateblue;
 }
+.modal-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+}
+.userInfoWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around ;
+    align-items: center;
+
+}
+.userInfoWrapper img{
+margin: 0% 10%;
+}
+.userInfoWrapper button{
+    margin: 0% 10%;
+    }
+
+    .storiesBar {
+        display: flex;
+        height: 5px;
+        width: 3vw;
+        background-color: #ccc;
+        overflow: hidden;
+        margin: 0% 2%;
+        padding: 0%;
+      }
+      
+      .progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: #2a74d2;
+       transition: width 3s linear;
+      }
+      .progressBarsWrapper{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }

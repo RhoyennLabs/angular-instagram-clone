@@ -6,7 +6,7 @@
     <div class="suggestions">
         <h1>Gente que quizás conozcas</h1>
         @for(usuario of userService.usuarios; track userService.usuarios ){
-            <div class="persona" (click)="userService.redirectToProfileSelected(usuario.nombre)">
+            <div class="persona" (click)="userService.redirectToProfileSelected(usuario.nombre,'profile')">
                 <img [src]="usuario.profilePicture" alt="">
                 <p  class="username" >{{usuario.nombre}}</p>
             </div>

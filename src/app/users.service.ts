@@ -11,11 +11,9 @@ import { likes } from './models/likesInterface';
 export class UserService{
   usuarios: Usuario[] = [];
   namesToCreateUsers: string[] = [
-
     "jennifermorris_x",
     "daniel_smith_88",
     "victoria_jones12",
-
     "rebeccawilliams_33",
     "peter_davis_77",
     "emilyroberts_x",
@@ -158,7 +156,12 @@ export class UserService{
             picture: postsImages[i],
             likes:[{userProfilePicture:randomPic,usuario:randomUser}],
             comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
-            }]
+            }],
+          stories:[{
+            usuario:randomUser,
+            profilePicture:randomPic,
+            picture: postsImages[i],
+          }]
          };
              // Agregar el nuevo usuario al array final
             finalUsersCreated.push(newUser);
@@ -179,14 +182,14 @@ export class UserService{
  
     console.log(finalUsersCreated);
   }
-  redirectToProfileSelected(usuario:string){
+  redirectToProfileSelected(usuario:string,input:string){
   const usuarioEncontrado = this.usuarios.find((user) => user.nombre === usuario);
 
-  if (usuarioEncontrado) {
+  if (usuarioEncontrado && input == 'stories') {
+    this.profileSelected = usuarioEncontrado; 
+  } else  if (usuarioEncontrado && input == 'profile'){
     this.profileSelected = usuarioEncontrado; 
     this.router.navigate(['/profile'])
-  } else {
-    alert("El usuario ya no se encuentra en instagram o no se ha registrado")
   }
   }
   getLikesOfAPost(likes:likes[]){
