@@ -18,9 +18,7 @@ export class StoriesComponent implements OnInit{
     this.userStories=this.userService.profileSelected.stories
   }
   ngOnInit() {
-    // Inicializar las barras de progreso (puedes ajustar la cantidad según tus necesidades)
-    this.initializeProgressBars();
-    console.log("barras de progreso:",this.progressBarsAndStories)
+this.initializeProgressBars()
   }
 
   initializeProgressBars() {
@@ -28,26 +26,24 @@ export class StoriesComponent implements OnInit{
       this.progressBarsAndStories.push({ width: '0%',storie:this.userService.profileSelected.stories[index]});
     }
 
-    this.startProgress();
   }
 //PONERLE 100%S SOLO A LA HISTORIA QUE SE ESTÉ VIENDO
-  startProgress() {
+  startProgress(picture:string) {
+    this.storieActual=picture
     // Cambiar la anchura de las barras de progreso gradualmente
     let seenStorie=this.progressBarsAndStories.find(Element=>{
         Element.storie.picture == this.storieActual
     })
-    if(seenStorie != undefined)
-    {
-      seenStorie.width='0%'
+    if (seenStorie !== undefined) {
+      seenStorie.width = '0%';
+      setTimeout(() => {
+        if (seenStorie !== undefined) {
+          seenStorie.width = '100%';
+        }
+      }, 3000);
     }
   
     this.storiesVistas.push(seenStorie)
 
-    this.progressBarsAndStories.forEach((progress, index) => {
-
-      setTimeout(() => {
-        progress.width = '100%';
-      }, (index + 1) *   3000); // Ajusta el intervalo de tiempo según tus preferencias
-    });
   }
 }

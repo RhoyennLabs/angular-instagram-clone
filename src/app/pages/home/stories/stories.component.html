@@ -28,6 +28,8 @@
         </div>
        
         <div class="modal-body">  
+      
+              <img [src]="storieActual" (load)="startProgress(userService.profileSelected.stories[0])" alt="">
 
         </div>
         <div class="modal-footer">
