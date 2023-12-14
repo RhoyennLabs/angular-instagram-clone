@@ -9,41 +9,41 @@ import { stories } from '../../../models/storiesInterface';
 })
 export class StoriesComponent implements OnInit{
   storieActual:string=''
+  storiesToShow:stories[]
   storiesVistas:any[]=[]
   userService:UserService 
-  progressBarsAndStories: { width: string,storie:stories }[] = [];
-  userStories:stories[]
-  constructor(UserService:UserService){
+  constructor(UserService:UserService){ 
     this.userService= UserService  
-    this.userStories=this.userService.profileSelected.stories
+    this.storiesToShow=this.userService.profileSelected.stories
   }
   ngOnInit() {
-this.initializeProgressBars()
+    
   }
 
-  initializeProgressBars() {
-    for (let index = 0; index < this.userService.profileSelected.stories.length; index++) {
-      this.progressBarsAndStories.push({ width: '0%',storie:this.userService.profileSelected.stories[index]});
-    }
+//incluir algoritmo que tome la primera historia que no se ha visto
 
-  }
-//PONERLE 100%S SOLO A LA HISTORIA QUE SE ESTÉ VIENDO
-  startProgress(picture:string) {
-    this.storieActual=picture
+  startProgress() {
+    //esta variable se asigna despues de encontrtar la imagen a mostrar
+    this.storieActual=this.storiesToShow[0].picture
     // Cambiar la anchura de las barras de progreso gradualmente
-    let seenStorie=this.progressBarsAndStories.find(Element=>{
-        Element.storie.picture == this.storieActual
+    let seenStorie=this.storiesToShow.find(Element=>{
+       return Element.picture == this.storieActual
     })
+
     if (seenStorie !== undefined) {
-      seenStorie.width = '0%';
-      setTimeout(() => {
+      console.log("obviamente no es undefined")
+      seenStorie.progress = '0%';
+      setTimeout(() => 
+      {
         if (seenStorie !== undefined) {
-          seenStorie.width = '100%';
+          seenStorie.progress = '100%';
         }
       }, 3000);
+    }else{
+      console.log("else")
     }
   
     this.storiesVistas.push(seenStorie)
 
   }
-}
+  }

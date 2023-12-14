@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Usuario } from './models/userInterface';
 import { post } from './models/postInterface';
 import { likes } from './models/likesInterface';
+import { stories } from './models/storiesInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class UserService{
     "logan_walker_111",
   ];
   feedPosts: post[] =[]
+  stories:stories[]=[]
   profileSelected: Usuario
   textoBusqueda: string = '';
   usuariosDeLaBusqueda: Usuario[] = [];
@@ -161,6 +163,8 @@ export class UserService{
             usuario:randomUser,
             profilePicture:randomPic,
             picture: postsImages[i],
+            seen:false,
+            progress:"0%"
           }]
          };
              // Agregar el nuevo usuario al array final
@@ -178,9 +182,13 @@ export class UserService{
           console.log(element.likes)
         })
       });
-   
- 
-    console.log(finalUsersCreated);
+    
+     //empujar todas las stories de todos los usuarios a la feed
+     this.usuarios.forEach(element => {
+      element.stories.forEach(element=>{
+        this.stories.push(element)  
+      })
+    });
   }
   redirectToProfileSelected(usuario:string,input:string){
   const usuarioEncontrado = this.usuarios.find((user) => user.nombre === usuario);

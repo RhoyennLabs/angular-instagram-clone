@@ -17,10 +17,10 @@
           </div>
           <div class="progressBarsWrapper">
  
-          @for(progress of progressBarsAndStories;track progressBarsAndStories){
+          @for(storie of storiesToShow;track storiesToShow){
            <div class="storiesBar">
    
-              <div class="progress-bar" [style.width]="progress.width"></div>
+              <div class="progress-bar" [style.width]="storie.progress"></div>
           
            </div>
             }
@@ -29,7 +29,7 @@
        
         <div class="modal-body">  
       
-              <img [src]="storieActual" (load)="startProgress(userService.profileSelected.stories[0])" alt="">
+              <img [src]="storieActual" (load)="startProgress()" alt="">
 
         </div>
         <div class="modal-footer">
