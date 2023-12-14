@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { UserService } from '../../../users.service';
 import { stories } from '../../../models/storiesInterface';
 
@@ -7,43 +7,48 @@ import { stories } from '../../../models/storiesInterface';
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })
-export class StoriesComponent implements OnInit{
-  storieActual:string=''
-  storiesToShow:stories[]
+export class StoriesComponent implements AfterViewInit {
+  storieActual:string | null
+  @ViewChild('modalStorie') modalStorie?: ElementRef;
+  storiesToShow:stories[] | null
   storiesVistas:any[]=[]
   userService:UserService 
   constructor(UserService:UserService){ 
+ 
     this.userService= UserService  
-    this.storiesToShow=this.userService.profileSelected.stories
+    this.storieActual=null
+    this.storiesToShow=null
+
   }
-  ngOnInit() {
-    
+  ngAfterViewInit () {
+    console.log('Elemento modalStorie:', this.modalStorie);
   }
 
 //incluir algoritmo que tome la primera historia que no se ha visto
 
-  startProgress() {
+   startProgress() {
+    alert("workin'")
+    this.storiesToShow=this.userService.profileSelected.stories
     //esta variable se asigna despues de encontrtar la imagen a mostrar
-    this.storieActual=this.storiesToShow[0].picture
-    // Cambiar la anchura de las barras de progreso gradualmente
-    let seenStorie=this.storiesToShow.find(Element=>{
-       return Element.picture == this.storieActual
-    })
+    let storiePicture= this.userService.profileSelected.stories[0].picture
+    this.storieActual=this.userService.profileSelected.stories[0].picture
+    let storieProgress=this.userService.profileSelected.stories[0].progress
+  
 
-    if (seenStorie !== undefined) {
+    if (storiePicture !== undefined) {
       console.log("obviamente no es undefined")
-      seenStorie.progress = '0%';
+      storieProgress = '0%';
       setTimeout(() => 
       {
-        if (seenStorie !== undefined) {
-          seenStorie.progress = '100%';
+        if (storieProgress !== undefined) {
+          storieProgress = '100%';
         }
       }, 3000);
     }else{
       console.log("else")
     }
   
-    this.storiesVistas.push(seenStorie)
+    this.storiesVistas.push(this.userService.profileSelected.stories[0])
 
   }
   }
