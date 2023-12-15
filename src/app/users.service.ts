@@ -192,7 +192,7 @@ export class UserService{
   }
   redirectToProfileSelected(usuario:string,input:string){
   const usuarioEncontrado = this.usuarios.find((user) => user.nombre === usuario);
-
+  console.log("usuario encontrado:", usuarioEncontrado)
   if (usuarioEncontrado && input == 'stories') {
     this.profileSelected = usuarioEncontrado; 
   } else  if (usuarioEncontrado && input == 'profile'){

@@ -1,46 +1,39 @@
-<div class="stories">
+
+  <div class="stories">
     @for(user of userService.usuarios; track userService.usuarios)
-    {
-        <img [src]="user.profilePicture"  data-bs-target="#staticBackdrop3" (click)="userService.redirectToProfileSelected(user.nombre,'stories')" data-bs-toggle="modal" alt="">
+    { 
+
+        <img [src]="user.profilePicture"   (click)="openStoriesModal(user.nombre)"  alt="">
     }
 </div>
 
-<div class="modal fade" id="staticBackdrop3" #modalStorie  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-  
-      <div class="modal-content">
-        <div class="modal-header">
+
+
+<div class="storiesModal"  #modalStorie >
+
+      <div class="modal-header">
+
           <div class="userInfoWrapper">
-            <img [src]="userService.profileSelected.profilePicture" alt="">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{userService.profileSelected.nombre}}</h1>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+             <img [src]="userService.profileSelected.profilePicture" alt="">
+             <h1 class="modal-title fs-5" id="staticBackdropLabel">{{userService.profileSelected.nombre}}</h1>
+             <button type="button" class="btn btn-secondary" (click)="closeStoriesModal()">Cerrar</button>
+
           </div>
+
           <div class="progressBarsWrapper">
- 
-          @for(storie of storiesToShow;track storiesToShow){
-           <div class="storiesBar">
+            @for(storie of storiesToShow;track storiesToShow){
+              <div class="storiesBar">
    
-              <div class="progress-bar" [style.width]="storie.progress"></div>
+                  <div class="progress-bar" [style.width]="userService.profileSelected.stories[0].progress"></div>
           
-           </div>
+              </div>
             }
           </div>
-        </div>
-       
-        <div class="modal-body">  
-      @if(storieActual != null){
-        <img [src]="storieActual" alt="">
-      }
-      @else if(storieActual == null){
-        <div class="spinner-border m-5" role="status">
-          <span class="visually-hidden" >Loading...</span>
-        </div>
-      }
-      
-        </div>
-        <div class="modal-footer">
+          
+          <div class="storie">
+              <img src="" alt="">
+          </div>
 
-        </div>
       </div>
-    </div>
-  </div>
+</div>
