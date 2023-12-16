@@ -7,36 +7,48 @@ import { stories } from '../../../models/storiesInterface';
   templateUrl: './stories.component.html',
   styleUrl: './stories.component.css'
 })
-export class StoriesComponent implements AfterViewInit {
+export class StoriesComponent implements OnInit {
   storieActual:string | null
   @ViewChild('modalStorie') modalStorie?: ElementRef | undefined;
-
+ 
   storiesToShow:stories[] | null
   storieProgress:string
   storiesVistas:any[]=[]
   userService:UserService 
+  loading:boolean
+
   constructor(UserService:UserService){ 
     this.userService= UserService  
+    this.loading= false
+    this.userService.usuarios.forEach(element => {
+      this.loading=false
+      element.stories.forEach(element2 => {
+      
+        this.storiesToShow?.push(element2)
+      })
+    });
+    this.loading= true
     this.storieActual=null
     this.storiesToShow=null
     this.storieProgress=''
+    
   }
-  ngAfterViewInit () {
-
-
+  ngOnInit() {
+   
   }
 
 //incluir algoritmo que tome la primera historia que no se ha visto
 
   openStoriesModal(nombre:string){
-    this.userService.redirectToProfileSelected(nombre,'stories')
-    this.storiesToShow=this.userService.profileSelected.stories
-    //esta variable se asigna despues de encontrtar la imagen a mostrar
-    let storiePicture= this.userService.profileSelected.stories[0].picture
-    this.storieActual=this.userService.profileSelected.stories[0].picture
-    let storieProgress=this.userService.profileSelected.stories[0].progress
-  
-
+      if (this.storiesToShow) {
+        // Encontrar el índice del elemento que coincide con el nombre
+        const index = this.storiesToShow.findIndex((element) => element.usuario === nombre);
+    
+        if (index !== -1) {
+          // Mover el elemento encontrado a la primera posición
+          const foundElement = this.storiesToShow.splice(index, 1)[0];
+          this.storiesToShow.unshift(foundElement);
+     }
     if (storiePicture !== undefined) {
       console.log("obviamente no es undefined")
       this.userService.profileSelected.stories[0].progress = '0%';
@@ -54,7 +66,7 @@ export class StoriesComponent implements AfterViewInit {
      if(this.modalStorie != undefined){
       this.modalStorie.nativeElement.style.display='block'
      }
-
+    }
   }
    closeStoriesModal(){
     if(this.modalStorie != undefined){
