@@ -39,11 +39,11 @@ export class StoriesComponent implements AfterViewInit {
 
     if (storiePicture !== undefined) {
       console.log("obviamente no es undefined")
-      storieProgress = '0%';
+      this.userService.profileSelected.stories[0].progress = '0%';
       setTimeout(() => 
       {
-        if (storieProgress !== undefined) {
-          storieProgress = '100%';
+        if (this.userService.profileSelected.stories[0].progress !== undefined) {
+          this.userService.profileSelected.stories[0].progress = '100%';
         }
       }, 3000);
     }else{

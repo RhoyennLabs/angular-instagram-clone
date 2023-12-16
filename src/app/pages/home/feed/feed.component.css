@@ -13,9 +13,11 @@
     height: 3vh;
     width: 3vh;
     border-radius: 50%;
+    cursor: pointer;
   }
   .likerWrapper span{
     padding-left: 4%;
+    cursor: pointer;
   }
 .post{
     margin-top:5vh ;
@@ -88,4 +90,39 @@ input[type=text]{
 .picture{
 height: 50vh;
 width: 50vh;
+}
+.comment {
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Añade un borde para visualizar mejor el contorno del comentario */
+}
+
+.commentPicture {
+    width: 20%;
+    padding: 1em; /* Agrega espacio alrededor de la imagen del usuario */
+}
+
+.commentUser {
+    width: 30%;
+    padding: 1em; /* Agrega espacio alrededor del nombre de usuario */
+}
+
+.commentText {
+    width: 50%;
+    text-align: center;
+    overflow: hidden; /* Evita que el texto sobresalga del contenedor */
+    word-wrap: break-word;
+    padding: 1em; /* Agrega espacio alrededor del texto del comentario */
+}
+
+.commentText h4 {
+    font-size: small;
+    margin: 0; /* Elimina el margen predeterminado del h4 */
+}
+
+.commentUsername {
+    font-size: large;
+    margin: 0; /* Elimina el margen predeterminado del nombre de usuario */
 }

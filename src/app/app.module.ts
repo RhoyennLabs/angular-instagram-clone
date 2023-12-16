@@ -13,6 +13,7 @@ import { UsuariosRecomendadosComponent } from './pages/home/usuarios-recomendado
 import { ReelsComponent } from './pages/reels/reels.component';
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

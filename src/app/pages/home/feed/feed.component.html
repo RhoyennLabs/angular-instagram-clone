@@ -8,7 +8,9 @@
         </div>
         <img class="picture" [src]="post.picture" alt="" srcset="">
         <div class="buttons">
-            <input type="button"  value="❤️">
+           <!-- lIKES  --> 
+            <input type="button" (click)="like(post.usuario,post.picture)" value="❤️">
+                  <!-- /lIKES  --> 
             <input type="button"  value="💬">
             <input type="button"  value="share">
         </div>
@@ -17,8 +19,32 @@
            {{post.likes.length}} likes
         </p>
         <p class="postComment">{{post.description}}</p>
+        @for(comentario of post.comments;track userService.feedPosts){
+          <div class="comment">
+            <div class="commentPicture">
+                <img [src]="comentario.userProfilePicture" class="postUserImage">
+            </div>
+            <div class="commentUser">
+                <h4 class="commentUsername">{{comentario.usuario}}</h4>
+            </div>
+            <div class="commentText">
+                <h4>{{comentario.comment}}</h4>
+            </div>
+        </div>
+        
+        }@empty{
+          <h1>nadie a comentado todavia. ¡sé el primero!</h1>
+        }
         <div class="buttons">
-            <input type="text" placeholder="Escribe un comentario..."><input type="button" value="🚀send">
+             <!-- comments  --> 
+             @if(comentariosForm[post.picture]){
+              <form [formGroup]="comentariosForm[post.picture]">
+                <input placeholder="Escribe un comentario" formControlName="comentario">
+              </form>
+             }
+            
+            <input type="button" value="🚀send" (click)="sendComment(post.usuario,post.picture)">
+              <!-- /comments  --> 
         </div>
      
     </div>
@@ -26,7 +52,7 @@
 }
 </div>
 
- <!-- SEARCH QUERY MODAL --> 
+ <!-- lIKES MODAL --> 
 
 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -38,7 +64,8 @@
         <div class="modal-body">  
           @for (like of userService.selectedPostLikes; track userService.selectedPostLikes ) {
                  <div class="likerWrapper">
-                    <img [src] ="like.userProfilePicture" alt="user-Profile-Picture"><span>{{ like.usuario }}</span>
+                    <img  data-bs-dismiss="modal" (click)="userService.redirectToProfileSelected(like.usuario,'profile')" [src] ="like.userProfilePicture" alt="user-Profile-Picture">
+                    <span  data-bs-dismiss="modal" (click)="userService.redirectToProfileSelected(like.usuario,'profile')">{{ like.usuario }}</span>
                  </div>
            }
           @empty{
