@@ -40,13 +40,35 @@ export class StoriesComponent implements OnInit {
 
   async openStoriesModal(nombre: string) {
     this.storieActual= await this.storiesToShow.find((obj) => obj[nombre][0]);
-    if (this.modalStorie != undefined) {
+    if(this.modalStorie != undefined){
       this.modalStorie.nativeElement.style.display = 'block';
     }
   }
-  changeStorie(){
-   // this.storiesToShow es el jefe. this.storieActual es jefe tambien pero storiesToShow va primero
+  changeStorie(nombre: string) {
+    const currentIndex = this.storiesToShow.findIndex((obj) => obj[nombre]);
+  //eliminar nombre. buscar automaticamente al siguiente usuario para mostrar sus historias y saltar al ultimo y mostrar sus historias igualmente.
+    if (currentIndex !== -1) {
+      const nextUser = this.storiesToShow[currentIndex + 1]?.[nombre];
+      
+      if (nextUser) {
+        console.log('Usuario siguiente:', nextUser);
+        // Realiza acciones con el siguiente usuario si es necesario
+      } else {
+        // Vuelve al primer usuario
+        const primerUsuario = this.storiesToShow[0];
+        this.storieActual= primerUsuario;
+        if (primerUsuario) {
+          console.log('Volviendo al primer usuario:', primerUsuario);
+          // Realiza acciones con el primer usuario si es necesario
+        } else {
+          console.log('No hay usuario en la lista');
+        }
+      }
+    } else {
+      console.log('Usuario no encontrado');
+    }
   }
+  
   closeStoriesModal() {
     if (this.modalStorie != undefined) {
       this.modalStorie.nativeElement.style.display = 'none';
