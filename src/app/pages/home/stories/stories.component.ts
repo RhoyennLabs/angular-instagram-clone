@@ -1,76 +1,55 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../../../users.service';
 import { stories } from '../../../models/storiesInterface';
 
 @Component({
   selector: 'app-stories',
   templateUrl: './stories.component.html',
-  styleUrl: './stories.component.css'
+  styleUrls: ['./stories.component.css']
 })
 export class StoriesComponent implements OnInit {
-  storieActual:string | null
+  storieActual: any= []
+  storiesToShow: { [user: string]: stories[] }[] = [];
+  storiesCount: number=0
+  storieProgress: string;
+  storiesVistas: stories[] = [];
+  loading: boolean;
   @ViewChild('modalStorie') modalStorie?: ElementRef | undefined;
- 
-  storiesToShow:stories[] | null
-  storieProgress:string
-  storiesVistas:any[]=[]
-  userService:UserService 
-  loading:boolean
 
-  constructor(UserService:UserService){ 
-    this.userService= UserService  
-    this.loading= false
-    this.userService.usuarios.forEach(element => {
-      this.loading=false
-      element.stories.forEach(element2 => {
-      
-        this.storiesToShow?.push(element2)
-      })
+  constructor(public userService: UserService) {
+    this.loading = false;
+
+    this.userService.usuarios.forEach((element) => {
+      let newUser = element.nombre;
+      let userToInsert: { [user: string]: stories[] } = {};
+      userToInsert[newUser] = [];
+
+      element.stories.forEach((element2) => {
+        userToInsert[newUser].push(element2);
+      });
+
+      this.storiesToShow.push(userToInsert);
     });
-    this.loading= true
-    this.storieActual=null
-    this.storiesToShow=null
-    this.storieProgress=''
-    
-  }
-  ngOnInit() {
-   
+
+    this.loading = true;
+    this.storieProgress = '';
   }
 
-//incluir algoritmo que tome la primera historia que no se ha visto
+  ngOnInit() {}
 
-  openStoriesModal(nombre:string){
-      if (this.storiesToShow) {
-        // Encontrar el índice del elemento que coincide con el nombre
-        const index = this.storiesToShow.findIndex((element) => element.usuario === nombre);
-    
-        if (index !== -1) {
-          // Mover el elemento encontrado a la primera posición
-          const foundElement = this.storiesToShow.splice(index, 1)[0];
-          this.storiesToShow.unshift(foundElement);
-     }
-    if (storiePicture !== undefined) {
-      console.log("obviamente no es undefined")
-      this.userService.profileSelected.stories[0].progress = '0%';
-      setTimeout(() => 
-      {
-        if (this.userService.profileSelected.stories[0].progress !== undefined) {
-          this.userService.profileSelected.stories[0].progress = '100%';
-        }
-      }, 3000);
-    }else{
-      console.log("else")
-    }
-  
-    this.storiesVistas.push(this.userService.profileSelected.stories[0])
-     if(this.modalStorie != undefined){
-      this.modalStorie.nativeElement.style.display='block'
-     }
+
+  async openStoriesModal(nombre: string) {
+    this.storieActual= await this.storiesToShow.find((obj) => obj[nombre][0]);
+    if (this.modalStorie != undefined) {
+      this.modalStorie.nativeElement.style.display = 'block';
     }
   }
-   closeStoriesModal(){
-    if(this.modalStorie != undefined){
-     this.modalStorie.nativeElement.style.display='none'
-    }
- }
+  changeStorie(){
+   // this.storiesToShow es el jefe. this.storieActual es jefe tambien pero storiesToShow va primero
   }
+  closeStoriesModal() {
+    if (this.modalStorie != undefined) {
+      this.modalStorie.nativeElement.style.display = 'none';
+    }
+  }
+}
