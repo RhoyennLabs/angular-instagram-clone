@@ -68,20 +68,46 @@ margin: 0% 10%;
         z-index: 10000000;
         width: 100vw;
         height: 100vh;
-        display: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
       }
 
-      $carousel-height: 70vh;
+      $carousel-height: 80vh;
+      $carousel-width:80vw;
       $carousel-border-radius: 0%;
       
       .carousel {
         height: $carousel-height;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 90vh;
+        border-radius: $carousel-border-radius;
+        display: flex;justify-content: center;align-items: center;
+        background-color: #2a74d2;
+      }
+      .carousel-item{
+        width:  $carousel-width;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .carousel-inner{
+       background-color: aqua;
+      width:  $carousel-width;height: 100%;
+      }
+      .carousel img{
+        display: block;
+        margin: 0;
+        padding: 0;
+        height: $carousel-height;
+        width:   $carousel-width;
         border-radius: $carousel-border-radius;
       }
       
-      .carousel img {
-        height: $carousel-height;
-        object-fit: cover;
-        width: 100%;
-        border-radius: $carousel-border-radius;
-      }
+       
+    

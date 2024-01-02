@@ -159,7 +159,16 @@ export class UserService{
             likes:[{userProfilePicture:randomPic,usuario:randomUser}],
             comments:[{usuario:randomUser,userProfilePicture: postsImages[i],comment:randomComment}]
             }],
+            //las historias reales se ordenan por id,y además contienen la hora de subida, lo cual no incluimos aún.
           stories:[{
+            id:1,
+            usuario:randomUser,
+            profilePicture:randomPic,
+            picture: postsImages[i],
+            seen:false,
+            progress:"0%"
+          },{
+            id:2,
             usuario:randomUser,
             profilePicture:randomPic,
             picture: postsImages[i],
