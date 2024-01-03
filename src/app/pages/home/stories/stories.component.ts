@@ -8,6 +8,7 @@ import { stories } from '../../../models/storiesInterface';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent implements OnInit {
+  storieViendose:stories | null
   userStories: { [user: string]: stories[] }[] = [];
   storiesDelUsuarioEscogido: any;
   storieProgress: string;
@@ -16,6 +17,7 @@ export class StoriesComponent implements OnInit {
   @ViewChild('modalStorie') modalStorie?: ElementRef;
 
   constructor(public userService: UserService) {
+    this.storieViendose=null
     this.loading = false;
     this.loadUserStories();
     this.loading = true;
@@ -29,6 +31,7 @@ export class StoriesComponent implements OnInit {
     //this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])
     //gpt quita trabajos:
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
+    this.storieViendose=this.storiesDelUsuarioEscogido[0]
     console.log("storie actual al abrir el modal:", this.storiesDelUsuarioEscogido);
 
     if (this.modalStorie) {
@@ -36,19 +39,39 @@ export class StoriesComponent implements OnInit {
     }
   }
 
-  changeStorie() {
-    const currentIndex = this.userStories.indexOf(this.storiesDelUsuarioEscogido);
+  changeStorie(option:String) {
+    if(option == "next"){
+      if (!this.storiesDelUsuarioEscogido) {
+        console.log('No hay historias para el usuario actual');
+        return;
+      }
+    
+      const currentIndex = this.storiesDelUsuarioEscogido.findIndex((storie:stories) => storie.id === this.storieViendose?.id);
+      console.log("indice antes de ejecutar changeusername:",currentIndex)
+      if (currentIndex !== -1) {
+        const nextIndex = currentIndex + 1;
+    //se hace esta verificacion para  no pasarse de storie
+    console.log("indice a recorrer:", nextIndex)
+    //aqui ta el queso
+        if (nextIndex <= this.storiesDelUsuarioEscogido.length  ) {
+      //aqui fin del queso
+          console.log("next index es menor o igual a storiesDelUsuarioEscogido.length")
+          console.log("largo stories del usuario=",this.storiesDelUsuarioEscogido.length)
+          console.log("indice despues de ejecutar changeusername", nextIndex)
+          this.storieViendose = this.storiesDelUsuarioEscogido[nextIndex];
+          console.log("storieViendose despues de ejecutar changeusername", this.storieViendose)
+        } else {
+          console.log("next index es mayor a storiesDelUsuarioEscogido.length")
+          this.storieViendose = this.storiesDelUsuarioEscogido[0];
+        }
+      } else {
+        console.log('Storie actual no encontrada en el array de historias del usuario');
+      }
+    }else if(option == "previous"){
 
-    // Eliminar nombre, buscar automáticamente al siguiente usuario para mostrar sus historias
-    // y saltar al último y mostrar sus historias igualmente.
-    if (currentIndex !== -1) {
-      const nextUser = this.userStories[currentIndex + 1];
-      this.storiesDelUsuarioEscogido = nextUser || this.userStories[0];
-    } else {
-      console.log('Usuario no encontrado');
     }
+   
   }
-
   closeStoriesModal() {
     if (this.modalStorie) {
       this.modalStorie.nativeElement.style.display = 'none';
@@ -58,5 +81,8 @@ export class StoriesComponent implements OnInit {
   private loadUserStories() {
     this.userStories = this.userService.usuarios.map((user) => ({
       [user.nombre]: user.stories}));
+  }
+  playUserStories(){
+
   }
 }

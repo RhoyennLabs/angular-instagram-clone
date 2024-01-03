@@ -164,7 +164,7 @@ export class UserService{
             id:1,
             usuario:randomUser,
             profilePicture:randomPic,
-            picture: postsImages[i],
+            picture: randomPic,
             seen:false,
             progress:"0%"
           },{
