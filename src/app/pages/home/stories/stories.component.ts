@@ -2,73 +2,62 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../../../users.service';
 import { stories } from '../../../models/storiesInterface';
 
+
 @Component({
   selector: 'app-stories',
-  templateUrl: './stories.component.html',
-  styleUrls: ['./stories.component.scss']
+  templateUrl: './stories.component.html', // Asegúrate de proporcionar la ruta correcta
+  styleUrls: ['./stories.component.scss'] // Asegúrate de proporcionar la ruta correcta
 })
 export class StoriesComponent implements OnInit {
-  storieViendose:stories | null
+  storieViendose: stories | null;
   userStories: { [user: string]: stories[] }[] = [];
-  storiesDelUsuarioEscogido: any;
-  storieProgress: string;
+  storiesDelUsuarioEscogido: stories[] = [];
+  storieProgress = '';
   storiesVistas: stories[] = [];
-  loading: boolean;
+  loading = false;
   @ViewChild('modalStorie') modalStorie?: ElementRef;
 
   constructor(public userService: UserService) {
-    this.storieViendose=null
-    this.loading = false;
-    this.loadUserStories();
+    this.storieViendose = null;
     this.loading = true;
     this.storieProgress = '';
+    this.loadUserStories();
   }
 
   ngOnInit() {}
 
-  async openStoriesModal(nombre: string) {
-    //antes
-    //this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])
-    //gpt quita trabajos:
+  openStoriesModal(nombre: string) {
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
-    this.storieViendose=this.storiesDelUsuarioEscogido[0]
+    this.storieViendose = this.storiesDelUsuarioEscogido[0];
     console.log("storie actual al abrir el modal:", this.storiesDelUsuarioEscogido);
- 
+
     if (this.modalStorie) {
       this.modalStorie.nativeElement.style.display = 'block';
     }
-    this.playUserStories()
+    this.playUserStories();
   }
 
   changeStorie() {
+    if (!this.storiesDelUsuarioEscogido) {
+      console.log('No hay historias para el usuario actual');
+      return;
+    }
 
-      if (!this.storiesDelUsuarioEscogido) {
-        console.log('No hay historias para el usuario actual');
-        return;
-      }
-   
-      const currentIndex = this.storiesDelUsuarioEscogido.findIndex((storie:stories) => storie.id === this.storieViendose?.id);
-      console.log("indice antes de ejecutar changeusername:",currentIndex)
-      if (currentIndex !== -1) {
-        const nextIndex = currentIndex + 1;
-    //se hace esta verificacion para  no pasarse de storie
-    console.log("indice a recorrer:", nextIndex)
+    const currentIndex = this.storiesDelUsuarioEscogido.findIndex((storie) => storie.id === this.storieViendose?.id);
+    console.log("indice antes de ejecutar changeusername:", currentIndex);
 
-        if (nextIndex < this.storiesDelUsuarioEscogido.length  ) {
+    if (currentIndex !== -1) {
+      const nextIndex = (currentIndex + 1) % this.storiesDelUsuarioEscogido.length;
 
-          this.storieViendose = this.storiesDelUsuarioEscogido[nextIndex];
-          this.playUserStories()
-        } else {
-          console.log("next index es mayor a storiesDelUsuarioEscogido.length")
-          this.storieViendose = this.storiesDelUsuarioEscogido[0];
-          this.playUserStories()
-        }
-      } else {
-        console.log('Storie actual no encontrada en el array de historias del usuario');
-      }
-    
-   
+      console.log("indice a recorrer:", nextIndex);
+
+      this.storieViendose = this.storiesDelUsuarioEscogido[nextIndex];
+      this.playUserStories();
+    } else {
+      console.log('Storie actual no encontrada en el array de historias del usuario');
+    }
   }
+
   closeStoriesModal() {
     if (this.modalStorie) {
       this.modalStorie.nativeElement.style.display = 'none';
@@ -76,22 +65,23 @@ export class StoriesComponent implements OnInit {
   }
 
   private loadUserStories() {
-    this.userStories = this.userService.usuarios.map((user) => ({
-      [user.nombre]: user.stories}));
+    this.userStories = this.userService.usuarios.map((user) => ({ [user.nombre]: user.stories }));
   }
-  playUserStories(){
-    if( this.storieViendose != undefined){
+
+  playUserStories() {
+    if (this.storieViendose) {
       this.storieViendose.progress = '0%';
-      setTimeout(()=>
-      {
-        if( this.storieViendose != null){
-          this.storieViendose.progress='100%' 
+
+      setTimeout(() => {
+        if (this.storieViendose) {
+          this.storieViendose.progress = '100%';
+          this.storieViendose.seen = true;
+          this.changeStorie();
         }
+
+      }, 3000);
+
     
-      },3000)
-      this.storieViendose.seen=true
-      this.changeStorie()
     }
-    
   }
 }
