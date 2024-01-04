@@ -33,43 +33,40 @@ export class StoriesComponent implements OnInit {
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
     this.storieViendose=this.storiesDelUsuarioEscogido[0]
     console.log("storie actual al abrir el modal:", this.storiesDelUsuarioEscogido);
-
+ 
     if (this.modalStorie) {
       this.modalStorie.nativeElement.style.display = 'block';
     }
+    this.playUserStories()
   }
 
-  changeStorie(option:String) {
-    if(option == "next"){
+  changeStorie() {
+
       if (!this.storiesDelUsuarioEscogido) {
         console.log('No hay historias para el usuario actual');
         return;
       }
-    
+   
       const currentIndex = this.storiesDelUsuarioEscogido.findIndex((storie:stories) => storie.id === this.storieViendose?.id);
       console.log("indice antes de ejecutar changeusername:",currentIndex)
       if (currentIndex !== -1) {
         const nextIndex = currentIndex + 1;
     //se hace esta verificacion para  no pasarse de storie
     console.log("indice a recorrer:", nextIndex)
-    //aqui ta el queso
-        if (nextIndex <= this.storiesDelUsuarioEscogido.length  ) {
-      //aqui fin del queso
-          console.log("next index es menor o igual a storiesDelUsuarioEscogido.length")
-          console.log("largo stories del usuario=",this.storiesDelUsuarioEscogido.length)
-          console.log("indice despues de ejecutar changeusername", nextIndex)
+
+        if (nextIndex < this.storiesDelUsuarioEscogido.length  ) {
+
           this.storieViendose = this.storiesDelUsuarioEscogido[nextIndex];
-          console.log("storieViendose despues de ejecutar changeusername", this.storieViendose)
+          this.playUserStories()
         } else {
           console.log("next index es mayor a storiesDelUsuarioEscogido.length")
           this.storieViendose = this.storiesDelUsuarioEscogido[0];
+          this.playUserStories()
         }
       } else {
         console.log('Storie actual no encontrada en el array de historias del usuario');
       }
-    }else if(option == "previous"){
-
-    }
+    
    
   }
   closeStoriesModal() {
@@ -83,6 +80,17 @@ export class StoriesComponent implements OnInit {
       [user.nombre]: user.stories}));
   }
   playUserStories(){
-
+    if( this.storieViendose != undefined){
+      this.storieViendose.progress = '0%';
+      setTimeout(()=>
+      {
+        if( this.storieViendose != null){
+          this.storieViendose.progress='100%' 
+        }
+    
+      },3000)
+      this.changeStorie()
+    }
+    
   }
 }

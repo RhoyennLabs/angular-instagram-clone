@@ -22,10 +22,16 @@
 
           <div class="progressBarsWrapper">
             @for(storie of storiesDelUsuarioEscogido;track storiesDelUsuarioEscogido){
-              <div class="storiesBar">
+         
+              @if(storieViendose?.seen==false){
+                <div class="storiesBar">
                   <div class="progress-bar" [style.width]="storie.progress"></div>
               </div>
-              
+              }@else{
+                <div class="storiesBar">
+                  <div class="progress-bar-seen" }></div>
+              </div>
+              }
             }
           </div>
           
@@ -34,15 +40,15 @@
       </div>
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-inner">
-              <div class="carousel-item active">
+              <div class="carousel-item">
                 <img [src]="storieViendose?.picture" class="d-block w-100" alt="..."> 
               </div>
         </div>
-        <button (click)="changeStorie('next')"class="carousel-control-prev" type="button" >
+        <button (click)="changeStorie()"class="carousel-control-prev" type="button" >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span  class="visually-hidden">Previous</span>
         </button>
-        <button (click)="changeStorie('next')" class="carousel-control-next" type="button">
+        <button (click)="changeStorie()" class="carousel-control-next" type="button">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
