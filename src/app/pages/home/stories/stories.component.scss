@@ -48,7 +48,22 @@ margin: 0% 10%;
         margin: 0% 2%;
         padding: 0%;
       }
-      
+      .storiesBarSeen{
+        display: flex;
+        height: 5px;
+        width: 3vw;
+        background-color: #777;
+        overflow: hidden;
+        margin: 0% 2%;
+        padding: 0%;
+      }
+      .progress-bar-seen
+      {
+        height: 100%;
+        width: 0%;
+        background-color: #2a74d2;
+       transition: width 3s linear;
+      }
       .progress-bar {
         height: 100%;
         width: 0%;

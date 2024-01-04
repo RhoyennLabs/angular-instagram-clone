@@ -89,6 +89,7 @@ export class StoriesComponent implements OnInit {
         }
     
       },3000)
+      this.storieViendose.seen=true
       this.changeStorie()
     }
     

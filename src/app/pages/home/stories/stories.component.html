@@ -21,22 +21,15 @@
           </div>
 
           <div class="progressBarsWrapper">
-            @for(storie of storiesDelUsuarioEscogido;track storiesDelUsuarioEscogido){
-         
-              @if(storieViendose?.seen==false){
-                <div class="storiesBar">
-                  <div class="progress-bar" [style.width]="storie.progress"></div>
+            @for(storie of storiesDelUsuarioEscogido;track storiesDelUsuarioEscogido)
+            {       
+              <div class="storiesBar" [class.storiesBarSeen]="storie.seen">
+                  <div class="progress-bar" [class.progress-bar-seen]="storie.seen" [style.width]="storie.progress"></div>
               </div>
-              }@else{
-                <div class="storiesBar">
-                  <div class="progress-bar-seen" }></div>
-              </div>
-              }
             }
+            
           </div>
-          
-   
-
+  
       </div>
       <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-inner">
