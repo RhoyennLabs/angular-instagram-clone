@@ -38,91 +38,88 @@ margin: 0% 10%;
 .userInfoWrapper button{
     margin: 0% 10%;
     }
-
-    .storiesBar {
-        display: flex;
-        height: 5px;
-        width: 3vw;
-        background-color: #ccc;
-        overflow: hidden;
-        margin: 0% 2%;
-        padding: 0%;
-      }
-      .storiesBarSeen{
-        display: flex;
-        height: 5px;
-        width: 3vw;
-        background-color: #777;
-        overflow: hidden;
-        margin: 0% 2%;
-        padding: 0%;
-      }
-      .progress-bar-seen
-      {
-        height: 100%;
-        width: 0%;
-        background-color: #2a74d2;
-       transition: width 3s linear;
-      }
-      .progress-bar {
-        height: 100%;
-        width: 0%;
-        background-color: #2a74d2;
-       transition: width 3s linear;
-      }
-      .progressBarsWrapper{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-      }
-      .storiesModal{
-        right: 0;
-        top: 0;
-        position: absolute;
-        background-color: #333;
-        z-index: 10000000;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-      }
-
-      $carousel-height: 80vh;
-      $carousel-width:80vw;
-      $carousel-border-radius: 0%;
-      
-      .carousel {
-        height: $carousel-height;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 90vh;
-        border-radius: $carousel-border-radius;
-        display: flex;justify-content: center;align-items: center;
-        background-color: #2a74d2;
-      }
-      .carousel-item{
-        width:  $carousel-width;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      .carousel-inner{
-       background-color: aqua;
-      width:  $carousel-width;height: 100%;
-      }
-      .carousel img{
-        display: block;
-        margin: 0;
-        padding: 0;
-        height: $carousel-height;
-        width:   $carousel-width;
-        border-radius: $carousel-border-radius;
-      }
-      
-       
+    .storiesBar,
+    .storiesBarSeen {
+      display: flex;
+      height: 5px;
+      width: 3vw;
+      overflow: hidden;
+      margin: 0% 2%;
+      padding: 0%;
+    }
     
+    .storiesBar {
+      background-color: #ccc;
+    }
+    
+    .storiesBarSeen {
+      background-color: #777;
+    }
+    
+    .progress-bar-seen {
+      display: none;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #2a74d2;
+      transition: width 3s linear;
+    }
+    
+    .progressBarsWrapper {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    
+    .storiesModal {
+      right: 0;
+      top: 0;
+      position: absolute;
+      background-color: #333;
+      z-index: 10000000;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    
+    .carousel {
+      height: 80vh;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 90vh;
+      border-radius: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #2a74d2;
+    }
+    
+    .carousel-item {
+      width: 80vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-inner {
+      background-color: aqua;
+      width: 80vw;
+      height: 100%;
+    }
+    
+    .carousel img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      height: 80vh;
+      width: 80vw;
+      border-radius: 0%;
+    }

@@ -23,8 +23,8 @@
           <div class="progressBarsWrapper">
             @for(storie of storiesDelUsuarioEscogido;track storiesDelUsuarioEscogido)
             {       
-              <div class="storiesBar" [class.storiesBarSeen]="storie.seen">
-                  <div class="progress-bar" [class.progress-bar-seen]="storie.seen" [style.width]="storie.progress"></div>
+              <div [class.storiesBar]="!storie.seen" [class.storiesBarSeen]="storie.seen">
+                <div [class.progress-bar]="!storie.seen" [class.progress-bar-seen]="storie.seen" [style.width]="storie.progress"></div>
               </div>
             }
             
