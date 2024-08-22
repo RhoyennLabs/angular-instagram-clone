@@ -16,6 +16,7 @@ export class StoriesComponent implements OnInit {
   storieProgress = '';
   storiesVistas: stories[] = [];
   loading = false;
+  storie=false
   @ViewChild('modalStorie') modalStorie?: ElementRef;
 
   constructor(public userService: UserService) {
@@ -25,16 +26,14 @@ export class StoriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.modalStorie){
-      this.modalStorie.nativeElement.style.display = 'none';
-    }
+ 
 
   }
 
   openStoriesModal(nombre: string) {
+    this.storie=true
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
     this.storieViendose = this.storiesDelUsuarioEscogido[0];
-
     if (this.modalStorie) {
       this.modalStorie.nativeElement.style.display = 'block';
     }
