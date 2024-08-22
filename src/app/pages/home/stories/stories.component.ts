@@ -24,7 +24,12 @@ export class StoriesComponent implements OnInit {
     this.loadUserStories();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.modalStorie){
+      this.modalStorie.nativeElement.style.display = 'none';
+    }
+
+  }
 
   openStoriesModal(nombre: string) {
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
