@@ -65,4 +65,5 @@
     display: flex;
     flex-direction: row;
     padding: 4% 0%;
+    cursor: pointer;
   }
