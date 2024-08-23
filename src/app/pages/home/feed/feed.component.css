@@ -88,8 +88,10 @@ input[type=text]{
 
 }
 .picture{
-height: 50vh;
-width: 50vh;
+    height: auto;
+    width: auto;
+max-height: 50vh;
+max-width: 50vh;
 }
 .comment {
     width: 100%;

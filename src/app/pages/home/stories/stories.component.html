@@ -1,8 +1,7 @@
-  <div class="stories">
+<div class="stories">
     @for(user of userService.usuarios; track userService.usuarios)
     { 
-
-        <img [src]="user.profilePicture"   (click)="openStoriesModal(user.nombre)"  alt="">
+        <img [src]="user.profilePicture"   (click)="openStoriesModal(user.nombre,user.profilePicture)"  alt="">
     }
 </div>
 
@@ -14,8 +13,8 @@
 
           <div class="userInfoWrapper">
 
-             <img [src]="userService.profileSelected.profilePicture" alt="">
-             <h1 class="modal-title fs-5" id="staticBackdropLabel">{{userService.profileSelected.nombre}}</h1>
+             <img [src]="userChosenPicture" alt="">
+             <h1 class="modal-title fs-5" id="staticBackdropLabel">{{userChosen}}</h1>
              <button type="button" class="btn btn-secondary" (click)="closeStoriesModal()">Cerrar</button>
 
           </div>

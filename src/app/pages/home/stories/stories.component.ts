@@ -17,11 +17,14 @@ export class StoriesComponent implements OnInit {
   storiesVistas: stories[] = [];
   loading = false;
   storie=false
+  userChosen=""
+  userChosenPicture=""
   @ViewChild('modalStorie') modalStorie?: ElementRef;
 
   constructor(public userService: UserService) {
     this.storieViendose = null;
     this.loading = true;
+  
     this.loadUserStories();
   }
 
@@ -30,7 +33,9 @@ export class StoriesComponent implements OnInit {
 
   }
 
-  openStoriesModal(nombre: string) {
+  openStoriesModal(nombre: string,pic:string) {
+    this.userChosenPicture=pic
+    this.userChosen=nombre
     this.storie=true
     this.storiesDelUsuarioEscogido = this.userStories.find((obj) => obj[nombre])?.[nombre] || [];
     this.storieViendose = this.storiesDelUsuarioEscogido[0];
