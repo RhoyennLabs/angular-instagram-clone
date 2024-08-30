@@ -1,13 +1,12 @@
 .feed{
     width: 60vw;
     height: 85vh;
-    background-color: aliceblue;
+    background-color:#fff;
     overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    border-top: solid 2px red;
 }
 .likerWrapper img{
     height: 3vh;
@@ -127,4 +126,40 @@ max-width: 50vh;
 .commentUsername {
     font-size: large;
     margin: 0; /* Elimina el margen predeterminado del nombre de usuario */
+}
+@media (max-width:800px) {
+    .feed {
+      width: 90vw;
+  }
+  .post {
+    width: 80%;
+}
+}
+
+
+/* Ocultar scrollbar en navegadores WebKit */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Para Firefox */
+html {
+    scrollbar-width: none; /* Oculta scrollbar en Firefox */
+}
+
+/* Para Internet Explorer y Edge heredado */
+html {
+    -ms-overflow-style: none; /* Oculta scrollbar en IE y Edge */
+}
+
+/* Asegurarse de que los contenedores con scroll lo manejen sin mostrar el scrollbar */
+.feed, .sugestions-wrapper, .homeWrapper {
+    overflow: hidden; /* Opcional, solo si deseas desactivar el scroll */
+}
+
+/* Si deseas que el scroll funcione pero sin diseño de scrollbar */
+.feed, .sugestions-wrapper, .homeWrapper {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE y Edge */
 }

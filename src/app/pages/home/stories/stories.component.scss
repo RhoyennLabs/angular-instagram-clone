@@ -5,10 +5,9 @@
     height: 15vh;
     display: flex;
     align-items: center;
-    overflow-x: scroll;
+    overflow-y: scroll;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 img{
     height: 10vh;
@@ -131,3 +130,16 @@ margin: 0% 10%;
     .modal-title{
 color:#fff
     }
+
+    @media (max-width:800px) {
+      .stories{
+        width: 100%;
+        background-color: rgb(239, 239, 239);
+        height: 15vh;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+  }
