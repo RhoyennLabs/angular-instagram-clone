@@ -128,6 +128,15 @@ max-width: 50vh;
     margin: 0; /* Elimina el margen predeterminado del nombre de usuario */
 }
 @media (max-width:800px) {
+    .comment {
+        width: 100%;
+        min-height: min-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .feed {
       width: 90vw;
   }
