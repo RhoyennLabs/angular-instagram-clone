@@ -40,6 +40,7 @@
     color: #868e96; /* Color para enlaces deshabilitados */
   }
   .btn{
+
     width: min-content;
     margin: 10% 0%;
   }
@@ -83,5 +84,7 @@
     height: 15vh;
     width: 100%;
   }
-
+.btn{
+  font-size: small;
+}
 }

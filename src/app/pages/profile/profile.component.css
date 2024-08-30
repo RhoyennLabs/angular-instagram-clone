@@ -5,8 +5,7 @@
         margin-left: 15vw;
         position:absolute;
         display: flex;
-       flex-direction: column;
-    
+       flex-direction: column;    
 }
 header {
     display: flex;
@@ -71,8 +70,7 @@ header {
             margin-top: 15vh;
             position:absolute;
             display: flex;
-           flex-direction: column;
-        
+           flex-direction: column;        
     }
 
 }
