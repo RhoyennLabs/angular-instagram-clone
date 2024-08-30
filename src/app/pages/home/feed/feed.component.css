@@ -138,6 +138,17 @@ max-width: 50vh;
    font-size: small;
 }
 }
+@media (max-width:500px) {
+    .feed {
+      width: 90vw;
+  }
+  .post {
+    width: 93%;
+}
+.comment {
+   font-size: smaller;
+}
+}
 
 
 /* Ocultar scrollbar en navegadores WebKit */
