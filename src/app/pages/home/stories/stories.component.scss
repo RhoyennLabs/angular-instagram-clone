@@ -153,4 +153,11 @@ color:#fff
       width: auto;
       border-radius: 0%;
     }
+    .userInfoWrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around ;
+      align-items: center;
+  
+  }
   }
