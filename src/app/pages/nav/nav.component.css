@@ -19,7 +19,7 @@
   }
   .nav-item {
     margin-left: 10px;
-
+ 
   }
   .instagramHomeLogo{
     height: 15vh;
@@ -40,7 +40,7 @@
     color: #868e96; /* Color para enlaces deshabilitados */
   }
   .btn{
-    width: 10vw;
+    width: min-content;
     margin: 10% 0%;
   }
   .modal-header{

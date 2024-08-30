@@ -142,4 +142,16 @@ color:#fff
         justify-content: center;
         flex-wrap: wrap;
     }
+    .carousel img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      max-height: 70vh;
+      max-width: 80vw;
+      min-height: 60vh;
+  
+      height: auto;
+      width: auto;
+      border-radius: 0%;
+    }
   }
