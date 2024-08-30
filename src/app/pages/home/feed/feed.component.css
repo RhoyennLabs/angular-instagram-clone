@@ -130,7 +130,12 @@ max-width: 50vh;
     margin: 0; /* Elimina el margen predeterminado del nombre de usuario */
 }
 @media (max-width:800px) {
-
+    .postUserImage{
+        width: 6vh;
+        height: 6vh;
+        border-radius:650%;
+        cursor: pointer;
+    }
     
     .feed {
       width: 90vw;
