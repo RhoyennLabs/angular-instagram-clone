@@ -134,6 +134,9 @@ max-width: 50vh;
   .post {
     width: 93%;
 }
+.comment {
+   font-size: small;
+}
 }
 
 
