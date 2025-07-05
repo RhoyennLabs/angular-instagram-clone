@@ -68,7 +68,7 @@ export class UserService{
   private async crearUsuarios():Promise<void>{
     let pictures: string[] = [
 
-      "https://res.cloudinary.com/debvhmcid/image/upload/v1692592508/templario/Captura8_bdr8yw.jpg",
+      "https://res.cloudinary.com/debvhmcid/image/upload/v1751749015/rihanna_vx8inv.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1698132363/angular-dotnet-green_llcxfz.jpg",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323289/sm.1.750_tuibmh.jpg",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323258/1366_2000_zyxhhi.jpg",
@@ -82,15 +82,16 @@ export class UserService{
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323025/shutterstock_1709675404.jpg_1758632412_ziexii.webp",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702326414/cannabis-leaf-medium_ajjplp.jpg",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323409/1664220539433_nzkcpu.webp",
-       "https://res.cloudinary.com/debvhmcid/image/upload/v1702326482/image-41-1-500x311_v8jljr.webp"
+       "https://res.cloudinary.com/debvhmcid/image/upload/v1702326482/image-41-1-500x311_v8jljr.webp",
+       "https://res.cloudinary.com/debvhmcid/image/upload/v1751748673/yo_e5bxdh.jpg"
     ];
   
     let postsImages: string[] = [
 
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097158/happy-friends-love-hug_nlygqn.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097394/empire-state-building_ecb995bd_800x800_hh0ysu.jpg",
-      "https://res.cloudinary.com/debvhmcid/image/upload/v1691696017/serviciosocial_cdw2nz.png",
-      "https://res.cloudinary.com/debvhmcid/image/upload/v1692592508/templario/Captura8_bdr8yw.jpg",
+      "https://res.cloudinary.com/debvhmcid/image/upload/v1751749342/gatitos_plzix4.jpg",
+      "https://res.cloudinary.com/debvhmcid/image/upload/v1751749342/gatitos_plzix4.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1698132363/angular-dotnet-green_llcxfz.jpg",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323289/sm.1.750_tuibmh.jpg",
        "https://res.cloudinary.com/debvhmcid/image/upload/v1702323258/1366_2000_zyxhhi.jpg",
