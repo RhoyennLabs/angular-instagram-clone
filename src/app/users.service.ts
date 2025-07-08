@@ -87,7 +87,7 @@ export class UserService{
     ];
   
     let postsImages: string[] = [
-
+      "https://res.cloudinary.com/debvhmcid/image/upload/v1751749015/rihanna_vx8inv.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097158/happy-friends-love-hug_nlygqn.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1702097394/empire-state-building_ecb995bd_800x800_hh0ysu.jpg",
       "https://res.cloudinary.com/debvhmcid/image/upload/v1751749342/gatitos_plzix4.jpg",
